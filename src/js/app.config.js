@@ -1,4 +1,5 @@
-var app = angular.module('StarterApp', ['ngMaterial'])
+//app.config.js
+var app = angular.module('app', ['ngMaterial'])
 	.config(function($mdThemingProvider) {
 		$mdThemingProvider.theme('default')
 			.primaryPalette('amber', {
@@ -14,33 +15,20 @@ var app = angular.module('StarterApp', ['ngMaterial'])
 	}
 );
 
-app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
-	$scope.toggleSidenav = function(menuId) {
-		$mdSidenav(menuId).toggle();
-	};
-}]);
+	/*configure.$inject = 
+		['$mdThemingProvider'];*/
 
-app.controller('GeneralController',function($scope) {
-	$scope.general = [
-		{
-			title : 'Informations Pratiques',
-			url : 'infopratique.html'
-		},
-		{
-			title : 'Contact',
-			url : 'contact.html'
-		},
-		{
-			title : 'Forum',
-			url : 'forumrencontre.html'
-		},
-
-	];
-});
-
-app.directive('listeMembres', function(){
-		return {
-			restrict: 'E',
-			templateUrl: 'liste-membres.html'
-		};
-	});
+	// function configure($mdThemingProvider) {
+	// 	$mdThemingProvider.theme('default')
+	// 		.primaryPalette('amber', {
+	// 			'default': '400',
+	// 		})
+	// 		.accentPalette('red')
+	// 		.backgroundPalette('yellow', {
+	// 			'default':'500',
+	// 		});
+	// 	$mdThemingProvider.theme('altTheme')
+	// 		.primaryPalette('blue')
+	// 		.backgroundPalette('red');
+	// 	}
+//})();

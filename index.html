@@ -1,11 +1,11 @@
-<html lang="fr" ng-app="StarterApp">
+<html lang="fr" ng-app="app">
 	<head>
 		<meta name="viewport" content="initial-scale=1"/>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 		<link rel="stylesheet" href="src/angular/angular-material.min.css">
 		<link rel="stylesheet" type="text/css" href="src/css/paingouin.css">
 	</head>
-	<body layout="column" ng-controller="AppCtrl">
+	<body layout="column" ng-controller="sideNavController as sideNavCtrl">
 
 <!-- Header -->
 
@@ -28,29 +28,45 @@
 
 		<md-sidenav layout="column" class="site-sidenav md-sidenav-left md-whiteframe-z5" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 			<md-content flex role="navigation">
-			<ul class="docs-menu">
-			<li>
-				<md-list ng-controller="GeneralController">
-					<h1 class="md-display-1" >Informations</h1>
-					<md-list-item class="md-1-line" ng-repeat="item in general">
-						<div class="md-list-item-text">
-							<menu-link>{{item.title}}</menu-link>
-						</div>
-					</md-list-item>	
-				</md-list>
-				</li>
+				<ul class="docs-menu">
+					<li>
+					<md-list ng-controller="listeLogoutController as listeLogoutCtrl">
+						<h1 class="md-display-1" >Informations</h1>
+						<md-list-item class="md-1-line" ng-repeat="item in listeLogoutCtrl.listeLogout">
+							<div class="md-list-item-text">
+								<menu-link>{{ item.title }}</menu-link>
+							</div>
+						</md-list-item>	
+					</md-list>
+					</li>
 				</ul>
 			</md-content>
 		</md-sidenav>
 
 <!-- Contenu de la page -->
 
-		<div layout="column" flex id="content">
-			<md-content layout="column" flex class="md-padding">
-				<div ng-include="'liste-membres.html'"></div>
-				liste-membre
-				<liste-membres></liste-membres>
+		<div layout="row" flex id="content">
+			<md-content layout="row" flex class="md-padding">
 			</md-content>
+			<md-content layout="column"  class="md-padding">
+				<div ng-controller="productsController as productsCtrl"> 
+
+					<table id='table' class="md-whiteframe-z3">
+						<tr ng-repeat="x in productsCtrl.products">
+							<td>{{ x.Id }}</td>
+							<td>{{ x.nom }}</td>
+							<td>{{ x.valeur }}</td>
+						</tr>
+					</table>
+
+					</div>
+				
+				<liste-membres></liste-membres>
+
+			</md-content>
+			<md-content layout="row" flex class="md-padding">
+			</md-content>
+			
 		</div>
 	</div>
 
@@ -61,5 +77,10 @@
 	<script src="src/angular/angular-aria.min.js"></script>
 	<script src="src/angular/angular-material.min.js"></script>
 	<script src="src/js/app.config.js"></script>
+	<script src="src/js/productsController.js"></script>
+	<script src="src/js/sideNavController.js"></script>
+	<script src="src/js/listeMembres.directive.js"></script>
+	<script src="src/js/listeLogoutController.js"></script>
+	<!-- <script src="src/js/app.module.js"></script>-->
 	</body>
 </html>
